@@ -1,0 +1,506 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================================================== */
+:root {
+    --azul-oscuro: #1a365d;
+    --azul-claro: #2b6cb0;
+    --verde-whatsapp: #25d366;
+    --gris-fondo: #f7fafc;
+    --gris-texto: #4a5568;
+    --blanco: #ffffff;
+    --fuente-titulos: 'Playfair Display', serif, sans-serif;
+    --fuente-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-family: var(--fuente-base);
+    color: var(--gris-texto);
+    background-color: var(--gris-fondo);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   2. CABECERA / NAVBAR (Común para todas las páginas)
+   ========================================================================== */
+.navbar {
+    background-color: var(--azul-oscuro);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.img-logo {
+    height: 40px;
+    width: auto;
+}
+
+.logo span {
+    color: var(--blanco);
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar nav a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 5px 10px;
+}
+
+.navbar nav a:hover, .navbar nav a.active {
+    color: var(--blanco);
+    border-bottom: 2px solid var(--blanco);
+}
+
+/* ==========================================================================
+   3. PÁGINA DE INICIO (index.html)
+   ========================================================================== */
+/* Bloque de Portada / Hero */
+.hero-section {
+    position: relative;
+    background-image: url('img/consulta.jpg'); /* Tu imagen de fondo principal */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50vh;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); /* Capa oscura equilibrada */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--blanco);
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-family: var(--fuente-titulos);
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Sección Quiénes Somos */
+.about-section {
+    padding: 60px 10% 80px 10%;
+    /* Reemplazamos el fondo por tu foto con filtro claro */
+    background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+                url('img/plantilla.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.about-section h2 {
+    font-family: var(--fuente-titulos);
+    font-size: 2.5rem;
+    color: var(--azul-oscuro);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--gris-texto);
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* Sección de Contacto */
+.contacto-section {
+    padding: 60px 10% 80px 10%;
+    /* Ponemos tu foto con un filtro azul marino encima */
+    background: linear-gradient(rgba(26, 54, 93, 0.75), rgba(26, 54, 93, 0.75)), 
+                url('img/contacto-fondo.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.contacto-section h2 {
+    font-family: var(--fuente-titulos);
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--blanco);
+    margin-bottom: 40px;
+}
+
+.contacto-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Crea las 6 columnas perfectas */
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   POSICIONAMIENTO SIMÉTRICO (2 Arriba y 3 Abajo)
+   ========================================================================== */
+
+/* Fila 1 - Dirección (Ocupa el espacio izquierdo central) */
+.contacto-grid .contacto-info-block:nth-child(1) { 
+    grid-row: 1;
+    grid-column: 2 / span 2;
+}
+
+/* Fila 1 - Horario (Ocupa el espacio derecho central) */
+.contacto-grid .contacto-info-block:nth-child(2) { 
+    grid-row: 1;
+    grid-column: 4 / span 2;
+}
+
+/* Fila 2 - Email (Abajo a la izquierda) */
+.contacto-grid .contacto-info-block:nth-child(3) { 
+    grid-row: 2;
+    grid-column: span 2;
+}
+
+/* Ahora definimos el párrafo aparte, fuera de la llave anterior */
+.contacto-grid .contacto-info-block:nth-child(3) p {
+    font-size: 0.9rem;
+}
+
+/* Fila 2 - Teléfono (Abajo en el centro) */
+.contacto-grid .contacto-info-block:nth-child(4) { 
+    grid-row: 2;
+    grid-column: span 2;
+}
+
+/* Fila 2 - Instagram (Abajo a la derecha) */
+.contacto-grid .contacto-info-block:nth-child(5) { 
+    grid-row: 2;
+    grid-column: span 2;
+}
+
+.contacto-info-block {
+    background: var(--blanco);
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.contacto-info-block p {
+    margin-top: 10px;
+    font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   4. ESTRUCTURA NUEVA DE SERVICIOS (servicios.html y tratamientos.html)
+   ========================================================================== */
+.seccion-paginas {
+    padding: 140px 5% 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 75vh;
+}
+
+.contenedor-titulos {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contenedor-titulos h1 {
+    font-family: var(--fuente-titulos);
+    font-size: 2.8rem;
+    color: var(--azul-oscuro);
+    margin-bottom: 15px;
+}
+
+.contenedor-titulos p {
+    font-size: 1.1rem;
+    color: var(--gris-texto);
+}
+
+/* Rejilla de tarjetas automáticas (2 columnas en PC) */
+.grid-servicios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 35px;
+    width: 100%;
+}
+
+.card-servicio {
+    display: flex;
+    background: var(--blanco);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-servicio:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.img-servicio {
+    width: 40%;
+    min-width: 160px;
+    height: 100%;
+    min-height: 220px;
+    object-fit: cover;
+}
+
+.info-servicio {
+    padding: 25px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-servicio h3 {
+    font-size: 1.35rem;
+    color: var(--azul-oscuro);
+    margin-bottom: 12px;
+}
+
+.info-servicio p {
+    font-size: 0.95rem;
+    color: var(--gris-texto);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   5. BOTONES DE CONTACTO FLOTANTES (Para todos los dispositivos)
+   ========================================================================== */
+.botones-contacto-movil {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: auto;
+    max-width: 200px;
+}
+
+.btn-movil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 20px;
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    white-space: nowrap;
+}
+
+/* Colores de los botones para ordenador y móvil */
+.btn-movil.llamanos { background-color: var(--azul-oscuro); }
+.btn-movil.whatsapp { background-color: var(--verde-whatsapp); }
+.btn-movil.instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+
+/* Espaciado para los iconos en los botones flotantes */
+.btn-movil i {
+    margin-right: 10px; /* Esto crea el espacio entre el icono y la palabra */
+}
+
+/* ==========================================================================
+   6. PIE DE PÁGINA / FOOTER
+   ========================================================================== */
+footer {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: auto;
+}
+
+footer p {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin: 0 8px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--blanco);
+}
+
+/* ==========================================================================
+   ENLACE AUTOMÁTICO DE RETORNO (Para páginas legales)
+   ========================================================================== */
+.enlace-volver {
+    display: inline-block;
+    color: var(--blanco) !important; /* Forzamos el color blanco para que resalte en el footer azul */
+    text-decoration: none;           /* Quitamos el subrayado por defecto */
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.enlace-volver:hover {
+    text-decoration: underline;      /* Se subraya elegantemente al pasar el cursor */
+    opacity: 0.85;                   /* Sutil efecto visual al pasar el ratón */
+}
+
+/* ==========================================================================
+   7. ADAPTACIÓN EXCLUSIVA PARA MÓVILES (Media Query < 850px)
+   ========================================================================== */
+@media (max-width: 850px) {
+    /* Navbar móvil */
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+        padding: 15px 20px;
+    }
+    
+    .navbar nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .navbar nav a {
+        font-size: 0.9rem;
+        padding: 4px 8px;
+    }
+
+    /* Ajuste de textos en Inicio */
+    .hero-section {
+        height: auto;
+        padding: 160px 20px 60px 20px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.05rem;
+    }
+
+    .about-section {
+        padding: 50px 20px;
+    }
+
+    .about-section h2, .contacto-section h2, .contenedor-titulos h1 {
+        font-size: 1.85rem;
+    }
+
+    /* Transformación de Tarjetas a 1 sola columna perfecta */
+    .grid-servicios {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .card-servicio {
+        flex-direction: column; /* Pone la foto arriba y el texto abajo */
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .img-servicio {
+        width: 100%;
+        height: 190px;
+    }
+
+    .info-servicio {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Espaciado extra en contacto */
+    .contacto-section {
+        padding: 50px 20px;
+    }
+
+    /* Ajuste para los botones flotantes en móvil */
+    .botones-contacto-movil {
+        flex-direction: column; 
+        gap: 10px;
+        right: 15px;            
+        bottom: 15px;
+        max-width: 85%;       /* <--- AÑADE ESTO: Evita que ocupen toda la pantalla */
+    }
+
+    .btn-movil {
+        width: 100%;           /* <--- CAMBIA A 100%: Para que el botón llene su contenedor */
+        padding: 10px 12px;     
+        font-size: 0.8rem;     /* <--- AÑADE ESTO: Reduce un poco más si hace falta */
+        white-space: nowrap;   /* <--- AÑADE ESTO: Obliga a que NO rompa la línea */
+        overflow: hidden;      /* <--- AÑADE ESTO: Corta cualquier exceso */
+        text-overflow: ellipsis; /* <--- AÑADE ESTO: Si el texto es muy largo, pone "..." */
+    }
+}
+
+/* AJUSTES PARA LA SECCIÓN DE CONTACTO EN MÓVILES */
+@media (max-width: 768px) {
+    .contacto-grid {
+        display: flex !important; /* Cambiamos de Grid a Flexbox */
+        flex-direction: column;  /* Ponemos todo en vertical */
+        gap: 15px;               /* Espacio entre los cuadros */
+    }
+
+    .contacto-info-block {
+        grid-column: auto !important; /* Quitamos las restricciones de columnas */
+        grid-row: auto !important;
+        width: 100%;                 /* Que cada caja ocupe todo el ancho */
+        margin-bottom: 10px;         /* Separación inferior */
+    }
+}
