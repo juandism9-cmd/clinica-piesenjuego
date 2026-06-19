@@ -504,3 +504,10 @@ footer p {
         margin-bottom: 10px;         /* Separación inferior */
     }
 }
+
+/* --- AJUSTES TÍTULOS SERVICIOS Y TRATAMIENTOS PARA MÓVIL --- */
+@media (max-width: 768px) {
+    .titulo-con-margen {
+        padding-top: 40px; /* Si ves que sigue tocando el menú, sube este número a 150px */
+    }
+}
